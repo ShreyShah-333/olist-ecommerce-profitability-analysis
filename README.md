@@ -26,25 +26,18 @@ Olist is a marketplace connecting small Brazilian merchants to customers. This p
 | `olist_geolocation_dataset.csv` | Zip code to lat/lng mapping |
 | `product_category_name_translation.csv` | Category names in English |
 
-License: CC BY-NC-SA 4.0
+**License:** CC BY-NC-SA 4.0
 
 ## 🧰 Tech Stack
 
-`SQL (PostgreSQL)` `Python (pandas, matplotlib/seaborn, scikit-learn/XGBoost)` `Power BI`
+SQL (PostgreSQL) · Python (pandas, matplotlib/seaborn, scikit-learn) · Power BI
 
 ## 🗺️ Project Roadmap
 
-**Week 1 — Data Modeling & Cleaning (SQL)**
-Load the 9 CSVs into a relational schema, write joins connecting orders → items → payments → reviews → customers → sellers, handle one-order-multiple-items/sellers cases, and clean nulls/duplicates.
-
-**Week 2 — Exploratory Analysis & Modeling (Python)**
-Order volume trends, delivery time distributions, review score patterns by category/region, a cohort retention analysis using `customer_unique_id`, a profitability proxy (price minus freight minus an assumed cost ratio, clearly documented as an assumption), and a repeat-purchase propensity model (logistic regression / XGBoost).
-
-**Week 3 — Dashboard (Power BI)**
-Build the executive-facing dashboard surfacing contribution margin by category/region, cohort retention curves, and delivery-delay vs. review-score relationships.
-
-**Week 4 — Recommendation & Polish**
-Write a one-page business recommendation, tighten the analysis, and finalize documentation.
+- [x] **Week 1 — Data Modeling & Cleaning (SQL)** — Load the 9 CSVs into a relational schema, write joins connecting orders → items → payments → reviews → customers → sellers, handle one-order-multiple-items/sellers cases, and clean nulls/duplicates. *(Schema, load, and cleaning scripts complete in `sql/`.)*
+- [x] **Week 2 — Exploratory Analysis & Modeling (Python)** — Order volume trends, delivery time distributions, review score patterns by category/region, a cohort retention analysis using `customer_unique_id`, a profitability proxy (price minus freight minus an assumed cost ratio, clearly documented as an assumption), and a repeat-purchase propensity model (Random Forest). *(Scripts complete in `python/`; awaiting a run against the loaded dataset.)*
+- [ ] **Week 3 — Dashboard (Power BI)** — Build the executive-facing dashboard surfacing contribution margin by category/region, cohort retention curves, and delivery-delay vs. review-score relationships.
+- [ ] **Week 4 — Recommendation & Polish** — Write a one-page business recommendation, tighten the analysis, and finalize documentation.
 
 ## ✅ How We'll Measure Success
 
@@ -57,8 +50,16 @@ Write a one-page business recommendation, tighten the analysis, and finalize doc
 
 ```
 olist-ecommerce-profitability-analysis/
-├── sql/           # Schema creation, cleaning, and analysis queries
-├── python/        # EDA notebooks, cohort/retention analysis, propensity model
-├── powerbi/       # Power BI dashboard file(s)
+├── sql/
+│   ├── 01_schema.sql            # Table definitions and indexes
+│   ├── 02_load_data.sql         # \copy commands to load the 9 CSVs
+│   └── 03_data_cleaning.sql     # Read-only validation/cleaning checks
+├── python/
+│   ├── requirements.txt
+│   ├── 01_eda.py                 # Exploratory data analysis
+│   ├── 02_cohort_retention.py    # Cohort retention analysis
+│   ├── 03_profitability_proxy.py # Profitability proxy calculation
+│   └── 04_propensity_model.py    # Repeat-purchase propensity model
+├── powerbi/                      # Power BI dashboard file(s) (Week 3)
 └── README.md
 ```
