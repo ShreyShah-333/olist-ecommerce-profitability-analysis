@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Raw data (large CSVs, downloaded from Kaggle - not committed to git)
+data/
